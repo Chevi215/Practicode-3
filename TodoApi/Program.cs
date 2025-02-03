@@ -1,3 +1,7 @@
+using TodoApi;
+using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
