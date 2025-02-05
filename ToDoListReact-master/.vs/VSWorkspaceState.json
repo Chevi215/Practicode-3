@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\ToDoListReact-master",
+    "\\ToDoListReact-master\\public",
+    "\\ToDoListReact-master\\src"
   ],
-  "SelectedNode": "\\src\\service.js",
+  "SelectedNode": "\\ToDoListReact-master\\src\\service.js",
   "PreviewInSolutionExplorer": false
 }
