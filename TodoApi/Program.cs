@@ -1,10 +1,6 @@
 using TodoApi;
 using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.EntityFrameworkCore;
-using TodoApi;
-using Pomelo.EntityFrameworkCore.MySql;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 // using Microsoft.Extensions.DependencyInjection;
 // using Swashbuckle.AspNetCore.SwaggerGen;
@@ -84,6 +80,6 @@ app.MapDelete("/items/{id}", (int id, ToDoDbContext db) =>
 
 app.MapGet("/", () => "ToDoApi server is runing");
 
-connectionString = "server=bfvwm0ufsd8znyh4lvm9-mysql.services.clever-cloud.com;user ID=ukuefg8ctt9vtlnh;password=fQGOwt5UexfHsJEE8w7I;database=bfvwm0ufsd8znyh4lvm9";
+//connectionString = "Server=localhost;User ID=root;Password=215251844;Database=tododb;";
 
 app.Run();
