@@ -38,7 +38,7 @@ namespace TodoApi
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.NameName).HasMaxLength(100);
+                entity.Property(e => e.Name).HasMaxLength(100);
             });
 
             OnModelCreatingPartial(modelBuilder);

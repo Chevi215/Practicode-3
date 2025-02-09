@@ -1,44 +1,11 @@
-//using TodoApi;
-//using Pomelo.EntityFrameworkCore.MySql;
-//using Microsoft.EntityFrameworkCore;
-
-//var builder = WebApplication.CreateBuilder(args);
-
-//var app = builder.Build();
-
-//builder.Services.AddDbContext<ToDoDbContext>(options =>
-//    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
-//);
-
-//app.MapGet("/items/{id}", (int id) => {
-//    var item = items.FirstOrDefault(i => i.Id == id);
-//    return item is not null ? Results.Ok(item) : Results.NotFound();
-//});
-
-//app.MapGet("/items", () => {
-//    return Results.Ok(items);
-//});
-
-//app.MapPost("/items", (Item newItem) => {
-//    return $"Item created: {newItem.Name}";
-//});
-
-//app.MapPut("/items/{id}", (int id, Item updatedItem) => {
-//    return $"Item {id} updated to {updatedItem.Name}";
-//});
-
-//app.MapDelete("/items/{id}", (int id) => {
-//    return $"Item {id} deleted";
-//});
-
-
-//app.Run();
-
-
 using TodoApi;
 using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
+// using Microsoft.Extensions.DependencyInjection;
+// using Swashbuckle.AspNetCore.SwaggerGen;
+// using Microsoft.AspNetCore.Builder;
+// using Microsoft.Extensions.DependencyInjection;
 
 
 
@@ -55,11 +22,17 @@ builder.Services.AddCors(options =>
 
 var connectionString = builder.Configuration.GetConnectionString("ToDoDB");
 // Console.WriteLine();
-System.Console.WriteLine($"Connection String: {connectionString}");
-builder.Services.AddDbContext<ToDoDbContext>(options =>
+// System.Console.WriteLine($"Connection String: {connectionString}");
+// builder.Services.AddDbContext<ToDoDbContext>(options =>
 
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
-);
+//     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+// );
+
+
+builder.Services.AddDbContext<ToDoDbContext>(options =>
+      options.UseMySql(builder.Configuration.GetConnectionString("TodoDb"),
+      new MySqlServerVersion(new Version(8, 0, 21))));
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -107,6 +80,6 @@ app.MapDelete("/items/{id}", (int id, ToDoDbContext db) =>
 
 app.MapGet("/", () => "ToDoApi server is runing");
 
-private static string connectionString = "\"ToDoDB\": \"server=localhost;user=root;password=215251844;database=tododb\"";
+connectionString = "Server=localhost;User ID=root;Password=215251844;Database=tododb;";
 
 app.Run();

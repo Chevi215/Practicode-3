@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-const apiUrl = ""
+const config={
+  apiUrl: process.env.REACT_APP_URL
+}
 
 export default {
   getTasks: async () => {
-    const result = await axios.get(`${apiUrl}/items`)    
+    const result = await axios.get(`${config.apiUrl}/items`)    
     return result.data;
   },
 
